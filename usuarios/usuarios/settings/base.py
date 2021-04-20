@@ -18,7 +18,7 @@ def get_secret(secret_name,secrets=secret):
     try:
         return secrets[secret_name]
     except:
-        msg = "la variable %s no existe" % secret_name
+        msg = "la variable %s no existe" %secret_name
         raise ImproperlyConfigured(msg)
 
 
@@ -35,13 +35,16 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+      
 )
 
-LOCAL_APPS = ()
+LOCAL_APPS = (
+    'applications.users',
+)
 
-THIRD_PARTY_APSS = ()
+THIRD_PARTY_APPS = ()
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APSS
+INSTALLED_APPS = (DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -92,6 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.Usuario'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
